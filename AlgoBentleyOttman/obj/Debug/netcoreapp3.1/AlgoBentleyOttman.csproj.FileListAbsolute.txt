@@ -11,3 +11,6 @@ C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Debug\netcore
 C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Debug\netcoreapp3.1\AlgoBentleyOttman.dll
 C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Debug\netcoreapp3.1\AlgoBentleyOttman.pdb
 C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Debug\netcoreapp3.1\AlgoBentleyOttman.genruntimeconfig.cache
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\bin\Debug\netcoreapp3.1\BentleyOttman.dll
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\bin\Debug\netcoreapp3.1\BentleyOttman.pdb
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Debug\netcoreapp3.1\AlgoBentleyOttman.csproj.CopyComplete

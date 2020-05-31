@@ -6,14 +6,6 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "AlgoBentleyOttman/1.0.0": {
-        "dependencies": {
-          "BentleyOttman": "1.0.0"
-        },
-        "runtime": {
-          "AlgoBentleyOttman.dll": {}
-        }
-      },
       "BentleyOttman/1.0.0": {
         "runtime": {
           "BentleyOttman.dll": {}
@@ -22,11 +14,6 @@
     }
   },
   "libraries": {
-    "AlgoBentleyOttman/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "BentleyOttman/1.0.0": {
       "type": "project",
       "serviceable": false,
