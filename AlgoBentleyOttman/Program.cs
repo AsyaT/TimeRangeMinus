@@ -9,7 +9,8 @@ namespace AlgoBentleyOttman
     {
         static void Main(string[] args)
         {
-            RepairRule rule1 = new RepairRule(new DateTime(2020,6,1, 8,0,0), new DateTime(2020,6,1,17,0,0), 1, "день");
+            RepairRule rule1 = new RepairRule(new DateTime(2020,6,1, 9,0,0), new DateTime(2020,6,1,17,0,0), 1, "день");
+            RepairRule rule2 = new RepairRule(new DateTime(2020,6,1, 6,0,0), new DateTime(2020,6,1,7,0,0), 1, "день");
             RepairExclusion exclusion1 = new RepairExclusion(new DateTime(2020,6,6, 0,0,0), new DateTime(2020,6,8,0,0,0), 7, "день");
             RepairExclusion exclusion2 = new RepairExclusion(new DateTime(2020,6,2, 13,0,0), new DateTime(2020,6,2,14,0,0), 7, "день");
 
@@ -18,6 +19,7 @@ namespace AlgoBentleyOttman
             Dictionary<DateTime, MainDicStructure> MainDictionary = new Dictionary<DateTime, MainDicStructure>();
 
             MainDictionary.AddInterval(rule1);
+            MainDictionary.AddInterval(rule2);
             MainDictionary.AddInterval(exclusion1);
             MainDictionary.AddInterval(exclusion2);
 
