@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using BentleyOttman;
 
 namespace AlgoBentleyOttman
@@ -23,7 +20,7 @@ namespace AlgoBentleyOttman
              algo.AddRule(rule2);
              algo.AddRule(exclusion1);
              algo.AddRule(exclusion2);
-             algo.GetResult();
+             var result = algo.GetResult();
              
             Console.WriteLine("After loop: " + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond);
             Console.WriteLine("Finish!");
