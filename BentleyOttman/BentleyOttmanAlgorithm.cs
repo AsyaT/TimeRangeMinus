@@ -7,10 +7,10 @@ namespace BentleyOttman
 {
     public class BentleyOttmanAlgorithm
     {
-        private Dictionary<DateTime, MainDicStructure> MainDictionary = new Dictionary<DateTime, MainDicStructure>();
+        private List<KeyValuePair<DateTime, MainDicStructure>> MainDictionary = new List<KeyValuePair<DateTime, MainDicStructure>>();
         private List<Tuple<DateTime, DateTime>> result = new List<Tuple<DateTime, DateTime>>();
 
-        private long MaxOffsetTicks;
+        private readonly long MaxOffsetTicks;
 
         public BentleyOttmanAlgorithm(long ticks)
         {
@@ -25,28 +25,31 @@ namespace BentleyOttman
             else if (rule.GetType() == typeof(RepairExclusion))
                 isRule = false;
 
-            MainDictionary.Add(rule.Start, new MainDicStructure(true, isRule));
-            MainDictionary.Add(rule.End, new MainDicStructure(false, isRule));
+            MainDictionary.Add(new KeyValuePair<DateTime, MainDicStructure>(rule.Start, new MainDicStructure(true, isRule)));
+            MainDictionary.Add(new KeyValuePair<DateTime, MainDicStructure>(rule.End, new MainDicStructure(false, isRule)));
 
             DateTime offset = new DateTime(0);
 
             while (offset.Ticks <= MaxOffsetTicks)
             {
-                switch (rule.OffsetUom.ToLower())
+                switch (rule.OffsetUom)
                 {
-                    case "минут" :
+                    case TimeMeasure.Minutes :
                         offset = offset.AddMinutes(rule.Offset);
                         break;
-                    case "дней":
+                    case TimeMeasure.Days:
                         offset = offset.AddDays(rule.Offset);
                         break;
-                    case "часов":
+                    case TimeMeasure.Hours:
                         offset = offset.AddHours(rule.Offset);
                         break;
+                    default: break; 
                 }
 
-                MainDictionary.Add(rule.Start.AddTicks(offset.Ticks), new MainDicStructure(true, isRule));
-                MainDictionary.Add(rule.End.AddTicks(offset.Ticks), new MainDicStructure(false, isRule));
+                MainDictionary.Add(new KeyValuePair<DateTime, MainDicStructure>(
+                    rule.Start.AddTicks(offset.Ticks), new MainDicStructure(true, isRule)));
+                MainDictionary.Add(new KeyValuePair<DateTime, MainDicStructure>(
+                    rule.End.AddTicks(offset.Ticks), new MainDicStructure(false, isRule)));
             }
         }
 

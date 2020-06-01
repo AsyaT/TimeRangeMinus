@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using BentleyOttman;
 
 namespace AlgoBentleyOttman
 {
@@ -10,6 +9,6 @@ namespace AlgoBentleyOttman
         public DateTime End { get; set; }
 
         public int Offset { get; set; }
-        public string OffsetUom { get; set; }
+        public TimeMeasure OffsetUom { get; set; }
     }
 }
