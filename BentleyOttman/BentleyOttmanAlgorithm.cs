@@ -7,12 +7,37 @@ namespace BentleyOttman
 {
     public class BentleyOttmanAlgorithm
     {
-        Dictionary<DateTime, MainDicStructure> MainDictionary = new Dictionary<DateTime, MainDicStructure>();
-        List<Tuple<DateTime, DateTime>> result = new List<Tuple<DateTime, DateTime>>();
+        private Dictionary<DateTime, MainDicStructure> MainDictionary = new Dictionary<DateTime, MainDicStructure>();
+        private List<Tuple<DateTime, DateTime>> result = new List<Tuple<DateTime, DateTime>>();
 
         public void AddRule(IBaseRule rule)
         {
-            MainDictionary.AddInterval(rule);
+            bool isRule = true;
+            if (rule.GetType() == typeof(RepairRule))
+                isRule = true;
+            else if (rule.GetType() == typeof(RepairExclusion))
+                isRule = false;
+
+            MainDictionary.Add(rule.Start, new MainDicStructure(true, isRule));
+            MainDictionary.Add(rule.End, new MainDicStructure(false, isRule));
+
+            DateTime offset = new DateTime(0);
+
+            while (offset.Ticks < new DateTime(0).AddYears(1).Ticks)
+            {
+                switch (rule.OffsetUom)
+                {
+                    case "день":
+                        offset = offset.AddDays(rule.Offset);
+                        break;
+                    case "час":
+                        offset = offset.AddHours(rule.Offset);
+                        break;
+                }
+
+                MainDictionary.Add(rule.Start.AddTicks(offset.Ticks), new MainDicStructure(true, isRule));
+                MainDictionary.Add(rule.End.AddTicks(offset.Ticks), new MainDicStructure(false, isRule));
+            }
         }
 
         public List<Tuple<DateTime, DateTime>> GetResult()
