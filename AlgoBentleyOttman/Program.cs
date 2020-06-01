@@ -15,7 +15,7 @@ namespace AlgoBentleyOttman
             RepairExclusion exclusion2 = new RepairExclusion(new DateTime(2020,6,2, 13,0,0), new DateTime(2020,6,2,14,0,0), 7, "день");
 
             Console.WriteLine("Before loop: " + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond);
-            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm();
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(0).AddYears(1).Ticks);
              algo.AddRule(rule1);
              algo.AddRule(rule2);
              algo.AddRule(exclusion1);

@@ -10,6 +10,13 @@ namespace BentleyOttman
         private Dictionary<DateTime, MainDicStructure> MainDictionary = new Dictionary<DateTime, MainDicStructure>();
         private List<Tuple<DateTime, DateTime>> result = new List<Tuple<DateTime, DateTime>>();
 
+        private long MaxOffsetTicks;
+
+        public BentleyOttmanAlgorithm(long ticks)
+        {
+            MaxOffsetTicks = ticks;
+        }
+
         public void AddRule(IBaseRule rule)
         {
             bool isRule = true;
@@ -23,14 +30,17 @@ namespace BentleyOttman
 
             DateTime offset = new DateTime(0);
 
-            while (offset.Ticks < new DateTime(0).AddYears(1).Ticks)
+            while (offset.Ticks <= MaxOffsetTicks)
             {
-                switch (rule.OffsetUom)
+                switch (rule.OffsetUom.ToLower())
                 {
-                    case "день":
+                    case "минут" :
+                        offset = offset.AddMinutes(rule.Offset);
+                        break;
+                    case "дней":
                         offset = offset.AddDays(rule.Offset);
                         break;
-                    case "час":
+                    case "часов":
                         offset = offset.AddHours(rule.Offset);
                         break;
                 }
@@ -54,7 +64,7 @@ namespace BentleyOttman
                     {
                         isExclusionInAction = true;
 
-                        if (isRuleInAction)
+                        if (isRuleInAction && resultCandidate!=null && resultCandidate.Item1.Equals(timeEvent.Key) == false)
                         {
                             resultCandidate = new Tuple<DateTime, DateTime>(resultCandidate.Item1, timeEvent.Key);
                             result.Add(resultCandidate);
@@ -76,7 +86,11 @@ namespace BentleyOttman
                     if (timeEvent.Value.IsOpen == true) //open
                     {
                         isRuleInAction = true;
-                        resultCandidate = new Tuple<DateTime, DateTime>(timeEvent.Key, new DateTime(0));
+
+                        if (isExclusionInAction == false)
+                        {
+                            resultCandidate = new Tuple<DateTime, DateTime>(timeEvent.Key, new DateTime(0));
+                        }
                     }
                     else //close
                     {
@@ -85,7 +99,7 @@ namespace BentleyOttman
                         {
                             resultCandidate = null;
                         }
-                        else
+                        else if(resultCandidate !=null && resultCandidate.Item1.Equals(timeEvent.Key) == false)
                         {
                             resultCandidate = new Tuple<DateTime, DateTime>(resultCandidate.Item1, timeEvent.Key);
                             result.Add(resultCandidate);
