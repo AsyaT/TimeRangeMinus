@@ -17,9 +17,15 @@ namespace AlgoBentleyOttman
             RepairRule rule2 = new RepairRule(
                 new DateTime(2020,6,1, 6,0,0), 
                 new DateTime(2020,6,1,7,0,0), 
-                1, TimeMeasure.Days);
-            RepairExclusion exclusion1 = new RepairExclusion(new DateTime(2020,6,6, 0,0,0), new DateTime(2020,6,8,0,0,0), 7, TimeMeasure.Days);
-            RepairExclusion exclusion2 = new RepairExclusion(new DateTime(2020,6,2, 13,0,0), new DateTime(2020,6,2,14,0,0), 7, TimeMeasure.Days);
+                null, TimeMeasure.None);
+            RepairExclusion exclusion1 = new RepairExclusion(
+                new DateTime(2020,6,6, 0,0,0),
+                new DateTime(2020,6,8,0,0,0), 
+                7, TimeMeasure.Days);
+            RepairExclusion exclusion2 = new RepairExclusion(
+                new DateTime(2020,6,2, 13,0,0),
+                new DateTime(2020,6,2,14,0,0), 
+                7, TimeMeasure.Days);
 
             Console.WriteLine("Before loop: " + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond);
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(0).AddYears(1).Ticks);

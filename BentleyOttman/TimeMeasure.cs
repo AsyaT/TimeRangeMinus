@@ -7,6 +7,7 @@ namespace BentleyOttman
 {
     public enum TimeMeasure
     {
+        None = 0,
         [Description("минут")]
         Minutes = 1,
         [Description("часов")]

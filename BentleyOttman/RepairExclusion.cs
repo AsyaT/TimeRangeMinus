@@ -10,12 +10,12 @@ namespace AlgoBentleyOttman
         public int Offset { get; set; }
         public TimeMeasure OffsetUom { get; set; }
 
-        public RepairExclusion(DateTime start, DateTime end, int offset, TimeMeasure offsetUom)
+        public RepairExclusion(DateTime start, DateTime end, int? offset, TimeMeasure offsetUom)
         {
             this.Start = start;
             this.End = end;
-            this.Offset = offset;
             this.OffsetUom = offsetUom;
+            this.Offset = offset.HasValue == false ? 0 : offset.Value;
         }
     }
 }
