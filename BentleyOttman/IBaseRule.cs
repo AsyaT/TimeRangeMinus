@@ -1,7 +1,6 @@
 ﻿using System;
-using BentleyOttman;
 
-namespace AlgoBentleyOttman
+namespace BentleyOttman
 {
     public interface IBaseRule
     {

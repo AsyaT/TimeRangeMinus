@@ -1,0 +1,16 @@
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\bin\Release\netcoreapp3.1\AlgoBentleyOttman.exe
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\bin\Release\netcoreapp3.1\AlgoBentleyOttman.deps.json
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\bin\Release\netcoreapp3.1\AlgoBentleyOttman.runtimeconfig.json
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\bin\Release\netcoreapp3.1\AlgoBentleyOttman.runtimeconfig.dev.json
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\bin\Release\netcoreapp3.1\AlgoBentleyOttman.dll
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\bin\Release\netcoreapp3.1\AlgoBentleyOttman.pdb
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\bin\Release\netcoreapp3.1\BentleyOttman.dll
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\bin\Release\netcoreapp3.1\BentleyOttman.pdb
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Release\netcoreapp3.1\AlgoBentleyOttman.csprojAssemblyReference.cache
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Release\netcoreapp3.1\AlgoBentleyOttman.csproj.CoreCompileInputs.cache
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Release\netcoreapp3.1\AlgoBentleyOttman.AssemblyInfoInputs.cache
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Release\netcoreapp3.1\AlgoBentleyOttman.AssemblyInfo.cs
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Release\netcoreapp3.1\AlgoBentleyOttman.csproj.CopyComplete
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Release\netcoreapp3.1\AlgoBentleyOttman.dll
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Release\netcoreapp3.1\AlgoBentleyOttman.pdb
+C:\Consom\TimeIntersection\AlgoBentleyOttman\AlgoBentleyOttman\obj\Release\netcoreapp3.1\AlgoBentleyOttman.genruntimeconfig.cache
