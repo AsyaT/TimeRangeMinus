@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "BentleyOttman/1.0.0": {
+      "BentleyOttman/1.1.0": {
         "runtime": {
           "BentleyOttman.dll": {}
         }
@@ -14,7 +14,7 @@
     }
   },
   "libraries": {
-    "BentleyOttman/1.0.0": {
+    "BentleyOttman/1.1.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
