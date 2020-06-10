@@ -11,11 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("BentleyOttman")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Asya Troyan")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute("Bentley Ottman Algorithm for intersection of time periods")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("BentleyOttman")]
+[assembly: System.Reflection.AssemblyProductAttribute("Bentley Ottman Algorithm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BentleyOttman")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 

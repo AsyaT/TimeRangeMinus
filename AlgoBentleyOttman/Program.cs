@@ -28,7 +28,7 @@ namespace AlgoBentleyOttman
                 7, TimeMeasure.Days);
 
             Console.WriteLine("Before loop: " + DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond);
-            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(0).AddYears(1).Ticks);
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(null, new DateTime(2020,8,1));
              algo.AddRule(rule1);
              algo.AddRule(rule2);
              algo.AddRule(exclusion1);

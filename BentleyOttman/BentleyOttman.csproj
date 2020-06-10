@@ -1,7 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <PackageId>BentleyOttmanAlgorithm</PackageId>
+    <Authors>Asya Troyan</Authors>
+    <Product>Bentley Ottman Algorithm</Product>
+    <Description>Bentley Ottman Algorithm for intersection of time periods</Description>
   </PropertyGroup>
 
 </Project>

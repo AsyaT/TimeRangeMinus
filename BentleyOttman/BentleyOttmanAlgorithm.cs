@@ -9,12 +9,35 @@ namespace BentleyOttman
         private List<KeyValuePair<DateTime, MainDicStructure>> MainDictionary = new List<KeyValuePair<DateTime, MainDicStructure>>();
         private List<Tuple<DateTime, DateTime>> result = new List<Tuple<DateTime, DateTime>>();
 
-        private readonly long MaxOffsetTicks;
+        private readonly DateTime? StartDateTime;
+        private readonly DateTime? EndDateTime;
 
-        public BentleyOttmanAlgorithm(long ticks)
+        public BentleyOttmanAlgorithm(DateTime? minStartDateTime, DateTime? maxEndDateTime)
         {
-            MaxOffsetTicks = ticks;
+            StartDateTime = minStartDateTime;
+            EndDateTime = maxEndDateTime;
         }
+
+        private bool IsInInterval(DateTime dateTimeEvent)
+        {
+            if (StartDateTime.HasValue && EndDateTime.HasValue)
+            {
+                return DateTime.Compare(StartDateTime.Value, dateTimeEvent) <= 0 &&
+                       DateTime.Compare(dateTimeEvent, EndDateTime.Value) <= 0;
+            }
+            if (StartDateTime.HasValue && EndDateTime.HasValue == false)
+            {
+                return DateTime.Compare(StartDateTime.Value, dateTimeEvent) <= 0;
+            }
+            if(StartDateTime.HasValue == false && EndDateTime.HasValue)
+            {
+                return DateTime.Compare(dateTimeEvent, EndDateTime.Value) <= 0;
+            }
+
+            return true;
+        }
+
+        
 
         public void AddRule(IBaseRule rule)
         {
@@ -24,35 +47,32 @@ namespace BentleyOttman
             else if (rule.GetType() == typeof(RepairExclusion))
                 isRule = false;
 
-            MainDictionary.Add(new KeyValuePair<DateTime, MainDicStructure>(rule.Start, new MainDicStructure(true, isRule)));
-            MainDictionary.Add(new KeyValuePair<DateTime, MainDicStructure>(rule.End, new MainDicStructure(false, isRule)));
+            if (IsInInterval(rule.Start) || IsInInterval(rule.End))
+            {
+
+                MainDictionary.Add(
+                    new KeyValuePair<DateTime, MainDicStructure>(rule.Start, new MainDicStructure(true, isRule)));
+                MainDictionary.Add(
+                    new KeyValuePair<DateTime, MainDicStructure>(rule.End, new MainDicStructure(false, isRule)));
+            }
 
             if (rule.OffsetUom != TimeMeasure.None && rule.Offset > 0)
             {
                 DateTime offset = new DateTime(0);
 
-                while (offset.Ticks <= MaxOffsetTicks)
-                {
-                    switch (rule.OffsetUom)
-                    {
-                        case TimeMeasure.Minutes:
-                            offset = offset.AddMinutes(rule.Offset);
-                            break;
-                        case TimeMeasure.Days:
-                            offset = offset.AddDays(rule.Offset);
-                            break;
-                        case TimeMeasure.Hours:
-                            offset = offset.AddHours(rule.Offset);
-                            break;
-                        default: break;
-                    }
+                offset = offset.CalculateOffset(rule.Offset, rule.OffsetUom);
 
+                while (IsInInterval(rule.Start.AddTicks(offset.Ticks)) || IsInInterval(rule.End.AddTicks(offset.Ticks)))
+                {
                     MainDictionary.Add(new KeyValuePair<DateTime, MainDicStructure>(
                         rule.Start.AddTicks(offset.Ticks), new MainDicStructure(true, isRule)));
                     MainDictionary.Add(new KeyValuePair<DateTime, MainDicStructure>(
                         rule.End.AddTicks(offset.Ticks), new MainDicStructure(false, isRule)));
+
+                    offset = offset.CalculateOffset(rule.Offset, rule.OffsetUom);
                 }
             }
+            
         }
 
         public List<Tuple<DateTime, DateTime>> GetResult()
