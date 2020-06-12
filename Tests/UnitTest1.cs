@@ -16,7 +16,7 @@ namespace Tests
         [Test]
         public void OnePeriodicalRule()
         {
-            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3));
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3,23,59,59));
 
             RepairRule rule1 = new RepairRule(
                 new DateTime(2020, 6, 1, 9, 0, 0),
@@ -43,7 +43,7 @@ namespace Tests
         [Test]
         public void OneNonPeriodicalRule()
         {
-            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3));
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
             RepairRule rule1 = new RepairRule(
                 new DateTime(2020, 8, 2, 9, 0, 0),
@@ -75,7 +75,7 @@ namespace Tests
         [Test]
         public void RuleAndException_1()
         {
-            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3));
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
             RepairRule rule1 = new RepairRule(
                 new DateTime(2020, 6, 1, 9, 0, 0),
@@ -84,8 +84,8 @@ namespace Tests
                 TimeMeasure.Days);
 
             RepairExclusion exclusion1 = new RepairExclusion(
-                new DateTime(2020, 6, 2, 0, 0, 0),
-                new DateTime(2020, 6, 2, 0, 0, 0),
+                new DateTime(2020, 8, 2, 0, 0, 0),
+                new DateTime(2020, 8, 3, 0, 0, 0),
                 0,
                 TimeMeasure.None
                 );
@@ -100,7 +100,7 @@ namespace Tests
         [Test]
         public void RuleAndException_2()
         {
-            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3));
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
             RepairRule rule1 = new RepairRule(
                 new DateTime(2020, 6, 1, 9, 0, 0),
@@ -109,8 +109,8 @@ namespace Tests
                 TimeMeasure.Days);
 
             RepairExclusion exclusion1 = new RepairExclusion(
-                new DateTime(2020, 6, 2, 13, 0, 0),
-                new DateTime(2020, 6, 2, 14, 0, 0),
+                new DateTime(2020, 8, 2, 13, 0, 0),
+                new DateTime(2020, 8, 2, 14, 0, 0),
                 0,
                 TimeMeasure.None
             );
@@ -125,7 +125,7 @@ namespace Tests
         [Test]
         public void RuleAndException_3()
         {
-            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3));
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
             RepairRule rule1 = new RepairRule(
                 new DateTime(2020, 6, 1, 9, 0, 0),
@@ -149,7 +149,7 @@ namespace Tests
 
         public void RuleAndException_4()
         {
-            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3));
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
             RepairRule rule1 = new RepairRule(
                 new DateTime(2020, 6, 1, 9, 0, 0),
@@ -174,7 +174,7 @@ namespace Tests
         [Test]
         public void TwoNonIntersecRules()
         {
-            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3));
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
             RepairRule rule1 = new RepairRule(
                 new DateTime(2020, 6, 1, 9, 0, 0),
@@ -198,7 +198,7 @@ namespace Tests
         [Test]
         public void TwoIntersecRules()
         {
-            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3));
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
             RepairRule rule1 = new RepairRule(
                 new DateTime(2020, 6, 1, 9, 0, 0),
@@ -232,7 +232,7 @@ namespace Tests
         [Test]
         public void TwoEntersecException()
         {
-            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3));
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
             RepairRule rule1 = new RepairRule(
                 new DateTime(2020, 6, 1, 9, 0, 0),

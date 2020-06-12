@@ -20,16 +20,7 @@ namespace BentleyOttman
 
         private bool IsInInterval(DateTime dateTimeEvent)
         {
-            if (StartDateTime.HasValue && EndDateTime.HasValue)
-            {
-                return DateTime.Compare(StartDateTime.Value, dateTimeEvent) <= 0 &&
-                       DateTime.Compare(dateTimeEvent, EndDateTime.Value) <= 0;
-            }
-            if (StartDateTime.HasValue && EndDateTime.HasValue == false)
-            {
-                return DateTime.Compare(StartDateTime.Value, dateTimeEvent) <= 0;
-            }
-            if(StartDateTime.HasValue == false && EndDateTime.HasValue)
+            if( EndDateTime.HasValue)
             {
                 return DateTime.Compare(dateTimeEvent, EndDateTime.Value) <= 0;
             }
@@ -81,7 +72,10 @@ namespace BentleyOttman
             bool isRuleInAction = false;
             Tuple<DateTime, DateTime> resultCandidate = null;
 
-            foreach (KeyValuePair<DateTime, MainDicStructure> timeEvent in MainDictionary.OrderBy(x => x.Key))
+            var sortedCollection = MainDictionary.Where(x => DateTime.Compare(StartDateTime.Value, x.Key) <= 0)
+                .OrderBy(x => x.Key);
+
+            foreach (KeyValuePair<DateTime, MainDicStructure> timeEvent in sortedCollection)
             {
                 if (timeEvent.Value.RuleExclusion == false) //This is exclusion
                 {
