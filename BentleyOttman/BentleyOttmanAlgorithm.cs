@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -69,7 +70,7 @@ namespace BentleyOttman
         public List<Tuple<DateTime, DateTime>> GetResult()
         {
             bool isExclusionInAction = false;
-            bool isRuleInAction = false;
+            IList<bool> isRuleInAction = new List<bool>();
             Tuple<DateTime, DateTime> resultCandidate = null;
 
             var sortedCollection = MainDictionary.Where(x => DateTime.Compare(StartDateTime.Value, x.Key) <= 0)
@@ -83,7 +84,7 @@ namespace BentleyOttman
                     {
                         isExclusionInAction = true;
 
-                        if (isRuleInAction && resultCandidate!=null && resultCandidate.Item1.Equals(timeEvent.Key) == false)
+                        if (isRuleInAction.Any() && resultCandidate!=null && resultCandidate.Item1.Equals(timeEvent.Key) == false)
                         {
                             resultCandidate = new Tuple<DateTime, DateTime>(resultCandidate.Item1, timeEvent.Key);
                             result.Add(resultCandidate);
@@ -93,7 +94,7 @@ namespace BentleyOttman
                     else //close
                     {
                         isExclusionInAction = false;
-                        if (isRuleInAction)
+                        if (isRuleInAction.Any())
                         {
                             resultCandidate = new Tuple<DateTime, DateTime>(timeEvent.Key, new DateTime(0));
                         }
@@ -104,21 +105,21 @@ namespace BentleyOttman
                 {
                     if (timeEvent.Value.IsOpen == true) //open
                     {
-                        isRuleInAction = true;
+                        isRuleInAction.Add(true);
 
-                        if (isExclusionInAction == false)
+                        if (isExclusionInAction == false && isRuleInAction.Count == 1)
                         {
                             resultCandidate = new Tuple<DateTime, DateTime>(timeEvent.Key, new DateTime(0));
                         }
                     }
                     else //close
                     {
-                        isRuleInAction = false;
+                        isRuleInAction.Remove(true);
                         if (isExclusionInAction)
                         {
                             resultCandidate = null;
                         }
-                        else if(resultCandidate !=null && resultCandidate.Item1.Equals(timeEvent.Key) == false)
+                        else if(resultCandidate !=null && resultCandidate.Item1.Equals(timeEvent.Key) == false && isRuleInAction.Count == 0)
                         {
                             resultCandidate = new Tuple<DateTime, DateTime>(resultCandidate.Item1, timeEvent.Key);
                             result.Add(resultCandidate);
