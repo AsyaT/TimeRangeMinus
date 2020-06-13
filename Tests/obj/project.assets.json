@@ -1226,7 +1226,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "BentleyOttmanAlgorithm/1.1.0": {
+      "BentleyOttmanAlgorithm/1.1.1": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "compile": {
@@ -4624,7 +4624,7 @@
         "system.xml.xpath.xmldocument.nuspec"
       ]
     },
-    "BentleyOttmanAlgorithm/1.1.0": {
+    "BentleyOttmanAlgorithm/1.1.1": {
       "type": "project",
       "path": "../BentleyOttman/BentleyOttman.csproj",
       "msbuildProject": "../BentleyOttman/BentleyOttman.csproj"
@@ -4632,7 +4632,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "BentleyOttmanAlgorithm >= 1.1.0",
+      "BentleyOttmanAlgorithm >= 1.1.1",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
       "NUnit >= 3.12.0",
       "NUnit3TestAdapter >= 3.16.1"

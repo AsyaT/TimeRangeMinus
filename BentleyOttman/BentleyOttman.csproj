@@ -6,7 +6,7 @@
     <Authors>Asya Troyan</Authors>
     <Product>Bentley Ottman Algorithm</Product>
     <Description>Bentley Ottman Algorithm for intersection of time periods</Description>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
   </PropertyGroup>
 
 </Project>

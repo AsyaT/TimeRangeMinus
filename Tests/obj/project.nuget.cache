@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qsMN5btCKFmkAH7BrWv8bJx3KKGck8/bNUbvaGDFLdy1pP616NC0VHrdpd4gaKUstghGisSYrsB3klrAGVbh4Q==",
+  "dgSpecHash": "1YL3bkrNGLcW93xBd3Zg2R0kQwxENurRRQRkqrNkP4QjOw2ASNqca6AeeW22YhNbmwSaqUManAiecsrvbcWOMg==",
   "success": true,
   "projectFilePath": "C:\\Consom\\TimeIntersection\\AlgoBentleyOttman\\Tests\\Tests.csproj",
   "expectedPackageFiles": [
@@ -66,8 +66,7 @@
     "C:\\Users\\Asya Troyan\\.nuget\\packages\\system.xml.xdocument\\4.0.11\\system.xml.xdocument.4.0.11.nupkg.sha512",
     "C:\\Users\\Asya Troyan\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Asya Troyan\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
-    "C:\\Users\\Asya Troyan\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Asya Troyan\\.nuget\\packages\\bentleyottmanalgorithm\\1.1.0\\bentleyottmanalgorithm.1.1.0.nupkg.sha512"
+    "C:\\Users\\Asya Troyan\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
