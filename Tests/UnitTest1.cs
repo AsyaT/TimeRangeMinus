@@ -342,5 +342,18 @@ namespace Tests
                 new DateTime(2020, 8, 3, 9, 0, 0),
                 new DateTime(2020, 8, 3, 17, 0, 0)), result[2]);
         }
+
+        [Test]
+        public void LiveTest()
+        {
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(null, new DateTime(0).AddDays(14));
+
+            algo.AddRule(new RepairRule(new DateTime(2020,6,1, 8,0,0), new DateTime(2020,6,1,20,0,0), 1, TimeMeasure.Days));
+            algo.AddRule(new RepairExclusion(new DateTime(2020, 6, 3, 8, 0, 0), new DateTime(2020, 6, 3, 20, 0, 0), 7, TimeMeasure.Days));
+
+            var result = algo.GetResult();
+
+            Assert.AreEqual(12, result.Count);
+        }
     }
 }
