@@ -346,7 +346,7 @@ namespace Tests
         [Test]
         public void LiveTest()
         {
-            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(null, new DateTime(0).AddDays(14));
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(null, new DateTime(2020,6,15));
 
             algo.AddRule(new RepairRule(new DateTime(2020,6,1, 8,0,0), new DateTime(2020,6,1,20,0,0), 1, TimeMeasure.Days));
             algo.AddRule(new RepairExclusion(new DateTime(2020, 6, 3, 8, 0, 0), new DateTime(2020, 6, 3, 20, 0, 0), 7, TimeMeasure.Days));

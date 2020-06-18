@@ -73,8 +73,11 @@ namespace BentleyOttman
             IList<bool> isRuleInAction = new List<bool>();
             Tuple<DateTime, DateTime> resultCandidate = null;
 
-            var sortedCollection = MainDictionary.Where(x => DateTime.Compare(StartDateTime.Value, x.Key) <= 0)
-                .OrderBy(x => x.Key);
+            var sortedCollection = MainDictionary.OrderBy(x => x.Key);
+            if(StartDateTime.HasValue)
+            {
+                sortedCollection = sortedCollection.Where(x => DateTime.Compare(StartDateTime.Value, x.Key) <= 0).OrderBy(x => x.Key);
+            }
 
             foreach (KeyValuePair<DateTime, MainDicStructure> timeEvent in sortedCollection)
             {
