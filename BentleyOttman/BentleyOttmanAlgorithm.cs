@@ -67,18 +67,14 @@ namespace BentleyOttman
             
         }
 
-        public List<Tuple<DateTime, DateTime>> GetResult()
+        public List<Tuple<DateTime, DateTime>> GetResult(bool includeCutIntervals = false)
         {
             bool isExclusionInAction = false;
             IList<bool> isRuleInAction = new List<bool>();
             Tuple<DateTime, DateTime> resultCandidate = null;
 
-            var sortedCollection = MainDictionary.OrderBy(x => x.Key);
-            if(StartDateTime.HasValue)
-            {
-                sortedCollection = sortedCollection.Where(x => DateTime.Compare(StartDateTime.Value, x.Key) <= 0).OrderBy(x => x.Key);
-            }
-
+            IOrderedEnumerable<KeyValuePair<DateTime, MainDicStructure>> sortedCollection = MainDictionary.OrderBy(x => x.Key);
+            
             foreach (KeyValuePair<DateTime, MainDicStructure> timeEvent in sortedCollection)
             {
                 if (timeEvent.Value.RuleExclusion == false) //This is exclusion
@@ -129,6 +125,18 @@ namespace BentleyOttman
                             resultCandidate = null;
                         }
                     }
+                }
+            }
+
+            if (StartDateTime.HasValue)
+            {
+                if(includeCutIntervals)
+                {
+                    result = result.Where(x => DateTime.Compare(StartDateTime.Value, x.Item2) <=0 ).ToList();
+                }
+                else
+                {
+                    result = result.Where(x => DateTime.Compare(StartDateTime.Value, x.Item1) <= 0 ).ToList();
                 }
             }
 

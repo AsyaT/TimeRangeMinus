@@ -355,5 +355,17 @@ namespace Tests
 
             Assert.AreEqual(12, result.Count);
         }
+
+        [Test]
+        public void CutPeriodTest()
+        {
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020,6,5, 11,30,00), new DateTime(2020, 6, 15, 11,30,00));
+
+            algo.AddRule(new RepairRule(new DateTime(2020,6,1,8,0,0), new DateTime(2020,6,1,13,0,0), 1, TimeMeasure.Days));
+
+            var result = algo.GetResult(true);
+
+            Assert.AreEqual(11, result.Count);
+        }
     }
 }

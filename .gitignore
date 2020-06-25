@@ -1,0 +1,7 @@
+*.dtbcache.v2
+*.suo
+*.testlog
+*.cache
+
+*.dll
+*.pdb
