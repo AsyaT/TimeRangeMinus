@@ -7,3 +7,6 @@
 *.pdb
 *.tmp
 *.json
+*.cache
+*.txt
+*AssemblyInfo.cs
