@@ -1,9 +1,0 @@
-C:\Consom\TimeIntersection\AlgoBentleyOttman\BentleyOttman\bin\Release\netcoreapp3.1\BentleyOttman.deps.json
-C:\Consom\TimeIntersection\AlgoBentleyOttman\BentleyOttman\bin\Release\netcoreapp3.1\BentleyOttman.dll
-C:\Consom\TimeIntersection\AlgoBentleyOttman\BentleyOttman\bin\Release\netcoreapp3.1\BentleyOttman.pdb
-C:\Consom\TimeIntersection\AlgoBentleyOttman\BentleyOttman\obj\Release\netcoreapp3.1\BentleyOttman.csproj.CoreCompileInputs.cache
-C:\Consom\TimeIntersection\AlgoBentleyOttman\BentleyOttman\obj\Release\netcoreapp3.1\BentleyOttman.AssemblyInfoInputs.cache
-C:\Consom\TimeIntersection\AlgoBentleyOttman\BentleyOttman\obj\Release\netcoreapp3.1\BentleyOttman.AssemblyInfo.cs
-C:\Consom\TimeIntersection\AlgoBentleyOttman\BentleyOttman\obj\Release\netcoreapp3.1\BentleyOttman.dll
-C:\Consom\TimeIntersection\AlgoBentleyOttman\BentleyOttman\obj\Release\netcoreapp3.1\BentleyOttman.pdb
-C:\Consom\TimeIntersection\AlgoBentleyOttman\BentleyOttman\obj\Release\netcoreapp3.1\BentleyOttman.csprojAssemblyReference.cache
