@@ -10,11 +10,13 @@ namespace AlgoBentleyOttman
             Console.WriteLine("Start program: "+ DateTime.Now.Minute+":" + DateTime.Now.Second+ ":"+DateTime.Now.Millisecond);
 
             RepairRule rule1 = new RepairRule(
+                new Guid(), 
                 new DateTime(2020,6,1, 9,0,0),
                 new DateTime(2020,6,1,17,0,0), 
                 1, 
                 TimeMeasure.Days);
             RepairRule rule2 = new RepairRule(
+                new Guid(),
                 new DateTime(2020,6,1, 6,0,0), 
                 new DateTime(2020,6,1,7,0,0), 
                 null, TimeMeasure.None);

@@ -4,6 +4,7 @@ namespace BentleyOttman
 {
     public interface IBaseRule
     {
+        public Guid? Guid { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
 

@@ -8,7 +8,7 @@ namespace BentleyOttman
     public class BentleyOttmanAlgorithm
     {
         private List<KeyValuePair<DateTime, MainDicStructure>> MainDictionary = new List<KeyValuePair<DateTime, MainDicStructure>>();
-        private List<Tuple<DateTime, DateTime>> result = new List<Tuple<DateTime, DateTime>>();
+        private List<ResultStructure> result = new List<ResultStructure>();
 
         private readonly DateTime? StartDateTime;
         private readonly DateTime? EndDateTime;
@@ -41,11 +41,10 @@ namespace BentleyOttman
 
             if (IsInInterval(rule.Start) || IsInInterval(rule.End))
             {
-
                 MainDictionary.Add(
-                    new KeyValuePair<DateTime, MainDicStructure>(rule.Start, new MainDicStructure(true, isRule)));
+                    new KeyValuePair<DateTime, MainDicStructure>(rule.Start, new MainDicStructure(rule.Guid.Value, true, isRule)));
                 MainDictionary.Add(
-                    new KeyValuePair<DateTime, MainDicStructure>(rule.End, new MainDicStructure(false, isRule)));
+                    new KeyValuePair<DateTime, MainDicStructure>(rule.End, new MainDicStructure(rule.Guid.Value, false, isRule)));
             }
 
             if (rule.OffsetUom != TimeMeasure.None && rule.Offset > 0)
@@ -57,9 +56,9 @@ namespace BentleyOttman
                 while (IsInInterval(rule.Start.AddTicks(offset.Ticks)) || IsInInterval(rule.End.AddTicks(offset.Ticks)))
                 {
                     MainDictionary.Add(new KeyValuePair<DateTime, MainDicStructure>(
-                        rule.Start.AddTicks(offset.Ticks), new MainDicStructure(true, isRule)));
+                        rule.Start.AddTicks(offset.Ticks), new MainDicStructure(rule.Guid.Value, true, isRule)));
                     MainDictionary.Add(new KeyValuePair<DateTime, MainDicStructure>(
-                        rule.End.AddTicks(offset.Ticks), new MainDicStructure(false, isRule)));
+                        rule.End.AddTicks(offset.Ticks), new MainDicStructure(rule.Guid.Value, false, isRule)));
 
                     offset = offset.CalculateOffset(rule.Offset, rule.OffsetUom);
                 }
@@ -67,11 +66,12 @@ namespace BentleyOttman
             
         }
 
-        public List<Tuple<DateTime, DateTime>> GetResult(bool includeCutIntervals = false)
+        public List<ResultStructure> GetResult(bool includeCutIntervals = false)
         {
             bool isExclusionInAction = false;
             IList<bool> isRuleInAction = new List<bool>();
-            Tuple<DateTime, DateTime> resultCandidate = null;
+            ResultStructure resultCandidate = null;
+            Guid? lastOpenGuid = null;
 
             IOrderedEnumerable<KeyValuePair<DateTime, MainDicStructure>> sortedCollection = MainDictionary.OrderBy(x => x.Key);
             
@@ -83,9 +83,9 @@ namespace BentleyOttman
                     {
                         isExclusionInAction = true;
 
-                        if (isRuleInAction.Any() && resultCandidate!=null && resultCandidate.Item1.Equals(timeEvent.Key) == false)
+                        if (isRuleInAction.Any() && resultCandidate!=null && resultCandidate.StartDateTime.Equals(timeEvent.Key) == false)
                         {
-                            resultCandidate = new Tuple<DateTime, DateTime>(resultCandidate.Item1, timeEvent.Key);
+                            resultCandidate = new ResultStructure() {Guid = resultCandidate.Guid, StartDateTime = resultCandidate.StartDateTime , EndDateTime = timeEvent.Key };
                             result.Add(resultCandidate);
                             resultCandidate = null;
                         }
@@ -95,7 +95,9 @@ namespace BentleyOttman
                         isExclusionInAction = false;
                         if (isRuleInAction.Any())
                         {
-                            resultCandidate = new Tuple<DateTime, DateTime>(timeEvent.Key, new DateTime(0));
+                            Guid newGuid = lastOpenGuid ?? new Guid();
+                            resultCandidate = new ResultStructure(){ Guid = newGuid, StartDateTime = timeEvent.Key , EndDateTime = new DateTime(0) };
+                            lastOpenGuid = null;
                         }
                     }
 
@@ -108,7 +110,8 @@ namespace BentleyOttman
 
                         if (isExclusionInAction == false && isRuleInAction.Count == 1)
                         {
-                            resultCandidate = new Tuple<DateTime, DateTime>(timeEvent.Key, new DateTime(0));
+                            lastOpenGuid = timeEvent.Value.Guid;
+                            resultCandidate = new ResultStructure() {Guid = timeEvent.Value.Guid, StartDateTime = timeEvent.Key , EndDateTime = new DateTime(0) };
                         }
                     }
                     else //close
@@ -118,9 +121,9 @@ namespace BentleyOttman
                         {
                             resultCandidate = null;
                         }
-                        else if(resultCandidate !=null && resultCandidate.Item1.Equals(timeEvent.Key) == false && isRuleInAction.Count == 0)
+                        else if(resultCandidate !=null && resultCandidate.StartDateTime.Equals(timeEvent.Key) == false && isRuleInAction.Count == 0)
                         {
-                            resultCandidate = new Tuple<DateTime, DateTime>(resultCandidate.Item1, timeEvent.Key);
+                            resultCandidate = new ResultStructure(){ Guid = resultCandidate.Guid, StartDateTime = resultCandidate.StartDateTime, EndDateTime = timeEvent.Key };
                             result.Add(resultCandidate);
                             resultCandidate = null;
                         }
@@ -132,11 +135,11 @@ namespace BentleyOttman
             {
                 if(includeCutIntervals)
                 {
-                    result = result.Where(x => DateTime.Compare(StartDateTime.Value, x.Item2) <=0 ).ToList();
+                    result = result.Where(x => DateTime.Compare(StartDateTime.Value, x.EndDateTime) <=0 ).ToList();
                 }
                 else
                 {
-                    result = result.Where(x => DateTime.Compare(StartDateTime.Value, x.Item1) <= 0 ).ToList();
+                    result = result.Where(x => DateTime.Compare(StartDateTime.Value, x.EndDateTime) <= 0 ).ToList();
                 }
             }
 
