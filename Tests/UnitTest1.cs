@@ -367,5 +367,17 @@ namespace Tests
 
             Assert.AreEqual(11, result.Count);
         }
+
+        [Test]
+        public void RealTest()
+        {
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(null, DateTime.Now.AddDays(60));
+            algo.AddRule(new RepairRule(new DateTime(2020,8,2,8,0,0), new DateTime(2020,8,3,0,0,0), null,TimeMeasure.None  ));
+            algo.AddRule(new RepairRule(new DateTime(2020,8,10,8,0,0), new DateTime(2020,8,11,0,0,0), null,TimeMeasure.None  ));
+
+            var result = algo.GetResult(true);
+
+            Assert.AreEqual(2, result.Count);
+        }
     }
 }
