@@ -20,7 +20,7 @@ namespace Tests
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3,23,59,59));
 
             var guid = new Guid();
-            RepairRule rule1 = new RepairRule(
+            Rule rule1 = new Rule(
                 guid, 
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
@@ -61,17 +61,17 @@ namespace Tests
 
             var rule0 = new Guid();
 
-            RepairRule rule1 = new RepairRule(rule0,
+            Rule rule1 = new Rule(rule0,
                 new DateTime(2020, 8, 2, 9, 0, 0),
                 new DateTime(2020, 8, 2, 17, 0, 0),
                 0,
                 TimeMeasure.None);
-            RepairRule rule2 = new RepairRule(new Guid(),
+            Rule rule2 = new Rule(new Guid(),
                 new DateTime(2020, 7, 2, 9, 0, 0),
                 new DateTime(2020, 7, 2, 17, 0, 0),
                 1,
                 TimeMeasure.None);
-            RepairRule rule3 = new RepairRule(new Guid(),
+            Rule rule3 = new Rule(new Guid(),
                 new DateTime(2020, 7, 2, 9, 0, 0),
                 new DateTime(2020, 7, 2, 17, 0, 0),
                 0,
@@ -98,13 +98,13 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            RepairRule rule1 = new RepairRule(new Guid(),
+            Rule rule1 = new Rule(new Guid(),
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
                 TimeMeasure.Days);
 
-            RepairExclusion exclusion1 = new RepairExclusion(
+            Exclusion exclusion1 = new Exclusion(
                 new DateTime(2020, 8, 2, 0, 0, 0),
                 new DateTime(2020, 8, 3, 0, 0, 0),
                 0,
@@ -123,13 +123,13 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            RepairRule rule1 = new RepairRule(new Guid(),
+            Rule rule1 = new Rule(new Guid(),
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
                 TimeMeasure.Days);
 
-            RepairExclusion exclusion1 = new RepairExclusion(
+            Exclusion exclusion1 = new Exclusion(
                 new DateTime(2020, 8, 2, 13, 0, 0),
                 new DateTime(2020, 8, 2, 14, 0, 0),
                 0,
@@ -148,13 +148,13 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            RepairRule rule1 = new RepairRule(new Guid(),
+            Rule rule1 = new Rule(new Guid(),
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
                 TimeMeasure.Days);
 
-            RepairExclusion exclusion1 = new RepairExclusion(
+            Exclusion exclusion1 = new Exclusion(
                 new DateTime(2020, 6, 2, 8, 0, 0),
                 new DateTime(2020, 6, 2, 14, 0, 0),
                 0,
@@ -172,13 +172,13 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            RepairRule rule1 = new RepairRule(new Guid(),
+            Rule rule1 = new Rule(new Guid(),
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
                 TimeMeasure.Days);
 
-            RepairExclusion exclusion1 = new RepairExclusion(
+            Exclusion exclusion1 = new Exclusion(
                 new DateTime(2020, 6, 2, 16, 0, 0),
                 new DateTime(2020, 6, 2, 20, 0, 0),
                 0,
@@ -197,12 +197,12 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            RepairRule rule1 = new RepairRule(new Guid(),
+            Rule rule1 = new Rule(new Guid(),
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
                 TimeMeasure.Days);
-            RepairRule rule2 = new RepairRule(new Guid(),
+            Rule rule2 = new Rule(new Guid(),
                 new DateTime(2020, 6, 1, 18, 0, 0),
                 new DateTime(2020, 6, 1, 20, 0, 0),
                 1,
@@ -224,12 +224,12 @@ namespace Tests
             var guid1 = new Guid();
             var guid2 = new Guid();
 
-            RepairRule rule1 = new RepairRule(guid1,
+            Rule rule1 = new Rule(guid1,
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
                 TimeMeasure.Days);
-            RepairRule rule2 = new RepairRule(guid2,
+            Rule rule2 = new Rule(guid2,
                 new DateTime(2020, 6, 1, 12, 0, 0),
                 new DateTime(2020, 6, 1, 13, 0, 0),
                 1,
@@ -264,12 +264,12 @@ namespace Tests
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
             Guid guid1 = new Guid();
             Guid guid2 = new Guid();
-            RepairRule rule1 = new RepairRule(guid1,
+            Rule rule1 = new Rule(guid1,
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
                 TimeMeasure.Days);
-            RepairRule rule2 = new RepairRule(guid2,
+            Rule rule2 = new Rule(guid2,
                 new DateTime(2020, 6, 1, 16, 0, 0),
                 new DateTime(2020, 6, 1, 18, 0, 0),
                 1,
@@ -308,18 +308,18 @@ namespace Tests
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
             var guid = new Guid();
-            RepairRule rule1 = new RepairRule(guid,
+            Rule rule1 = new Rule(guid,
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
                 TimeMeasure.Days);
 
-            RepairExclusion exclusion1 = new RepairExclusion(
+            Exclusion exclusion1 = new Exclusion(
                 new DateTime(2020, 8, 2, 8, 0, 0),
                 new DateTime(2020, 8, 2, 10, 0, 0),
                 0,
                 TimeMeasure.None);
-            RepairExclusion exclusion2 = new RepairExclusion(
+            Exclusion exclusion2 = new Exclusion(
                 new DateTime(2020, 8, 2, 9, 0, 0),
                 new DateTime(2020, 8, 2, 11, 0, 0),
                 0,
@@ -357,18 +357,18 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
             Guid guid = new Guid();
-            RepairRule rule1 = new RepairRule(guid,
+            Rule rule1 = new Rule(guid,
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
                 TimeMeasure.Days);
 
-            RepairExclusion exclusion1 = new RepairExclusion(
+            Exclusion exclusion1 = new Exclusion(
                 new DateTime(2020, 8, 2, 8, 0, 0),
                 new DateTime(2020, 8, 2, 12, 0, 0),
                 0,
                 TimeMeasure.None);
-            RepairExclusion exclusion2 = new RepairExclusion(
+            Exclusion exclusion2 = new Exclusion(
                 new DateTime(2020, 8, 2, 9, 0, 0),
                 new DateTime(2020, 8, 2, 11, 0, 0),
                 0,
@@ -406,8 +406,8 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(null, new DateTime(2020,6,15));
 
-            algo.AddRule(new RepairRule(new Guid(), new DateTime(2020,6,1, 8,0,0), new DateTime(2020,6,1,20,0,0), 1, TimeMeasure.Days));
-            algo.AddRule(new RepairExclusion( new DateTime(2020, 6, 3, 8, 0, 0), new DateTime(2020, 6, 3, 20, 0, 0), 7, TimeMeasure.Days));
+            algo.AddRule(new Rule(new Guid(), new DateTime(2020,6,1, 8,0,0), new DateTime(2020,6,1,20,0,0), 1, TimeMeasure.Days));
+            algo.AddRule(new Exclusion( new DateTime(2020, 6, 3, 8, 0, 0), new DateTime(2020, 6, 3, 20, 0, 0), 7, TimeMeasure.Days));
 
             var result = algo.GetResult();
 
@@ -419,7 +419,7 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020,6,5, 11,30,00), new DateTime(2020, 6, 15, 11,30,00));
 
-            algo.AddRule(new RepairRule(new Guid(), new DateTime(2020,6,1,8,0,0), new DateTime(2020,6,1,13,0,0), 1, TimeMeasure.Days));
+            algo.AddRule(new Rule(new Guid(), new DateTime(2020,6,1,8,0,0), new DateTime(2020,6,1,13,0,0), 1, TimeMeasure.Days));
 
             var result = algo.GetResult(true);
 
@@ -432,8 +432,8 @@ namespace Tests
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(null, DateTime.Now.AddDays(60));
             Guid rule1 = new Guid();
             Guid rule2 = new Guid();
-            algo.AddRule(new RepairRule(rule1,new DateTime(2020,8,2,8,0,0), new DateTime(2020,8,3,0,0,0), null,TimeMeasure.None  ));
-            algo.AddRule(new RepairRule(rule2,new DateTime(2020,8,10,8,0,0), new DateTime(2020,8,11,0,0,0), null,TimeMeasure.None  ));
+            algo.AddRule(new Rule(rule1,new DateTime(2020,8,2,8,0,0), new DateTime(2020,8,3,0,0,0), null,TimeMeasure.None  ));
+            algo.AddRule(new Rule(rule2,new DateTime(2020,8,10,8,0,0), new DateTime(2020,8,11,0,0,0), null,TimeMeasure.None  ));
 
             var result = algo.GetResult(true);
 

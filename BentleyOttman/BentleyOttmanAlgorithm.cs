@@ -34,9 +34,9 @@ namespace BentleyOttman
         public void AddRule(IBaseRule rule)
         {
             bool isRule = true;
-            if (rule.GetType() == typeof(RepairRule))
+            if (rule.GetType() == typeof(Rule))
                 isRule = true;
-            else if (rule.GetType() == typeof(RepairExclusion))
+            else if (rule.GetType() == typeof(Exclusion))
                 isRule = false;
 
             if (IsInInterval(rule.Start) || IsInInterval(rule.End))

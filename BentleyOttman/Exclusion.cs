@@ -2,7 +2,7 @@
 
 namespace BentleyOttman
 {
-    public class RepairRule : IBaseRule
+    public class Exclusion : IBaseRule
     {
         public Guid? Guid { get; set; }
         public DateTime Start { get; set; }
@@ -10,9 +10,9 @@ namespace BentleyOttman
         public int Offset { get; set; }
         public TimeMeasure OffsetUom { get; set; }
 
-        public RepairRule(Guid guid, DateTime start, DateTime end, int? offset, TimeMeasure offsetUom)
+        public Exclusion(DateTime start, DateTime end, int? offset, TimeMeasure offsetUom)
         {
-            this.Guid = guid;
+            Guid = null;
             this.Start = start;
             this.End = end;
             this.OffsetUom = offsetUom;

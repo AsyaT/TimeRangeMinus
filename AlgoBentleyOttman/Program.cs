@@ -9,22 +9,22 @@ namespace AlgoBentleyOttman
         {
             Console.WriteLine("Start program: "+ DateTime.Now.Minute+":" + DateTime.Now.Second+ ":"+DateTime.Now.Millisecond);
 
-            RepairRule rule1 = new RepairRule(
+            Rule rule1 = new Rule(
                 new Guid(), 
                 new DateTime(2020,6,1, 9,0,0),
                 new DateTime(2020,6,1,17,0,0), 
                 1, 
                 TimeMeasure.Days);
-            RepairRule rule2 = new RepairRule(
+            Rule rule2 = new Rule(
                 new Guid(),
                 new DateTime(2020,6,1, 6,0,0), 
                 new DateTime(2020,6,1,7,0,0), 
                 null, TimeMeasure.None);
-            RepairExclusion exclusion1 = new RepairExclusion(
+            Exclusion exclusion1 = new Exclusion(
                 new DateTime(2020,6,6, 0,0,0),
                 new DateTime(2020,6,8,0,0,0), 
                 7, TimeMeasure.Days);
-            RepairExclusion exclusion2 = new RepairExclusion(
+            Exclusion exclusion2 = new Exclusion(
                 new DateTime(2020,6,2, 13,0,0),
                 new DateTime(2020,6,2,14,0,0), 
                 7, TimeMeasure.Days);
