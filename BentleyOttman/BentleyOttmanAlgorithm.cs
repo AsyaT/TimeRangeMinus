@@ -42,9 +42,9 @@ namespace BentleyOttman
             if (IsInInterval(rule.Start) || IsInInterval(rule.End))
             {
                 MainDictionary.Add(
-                    new KeyValuePair<DateTime, MainDicStructure>(rule.Start, new MainDicStructure(rule.Guid.Value, true, isRule)));
+                    new KeyValuePair<DateTime, MainDicStructure>(rule.Start, new MainDicStructure(rule.Guid, true, isRule)));
                 MainDictionary.Add(
-                    new KeyValuePair<DateTime, MainDicStructure>(rule.End, new MainDicStructure(rule.Guid.Value, false, isRule)));
+                    new KeyValuePair<DateTime, MainDicStructure>(rule.End, new MainDicStructure(rule.Guid, false, isRule)));
             }
 
             if (rule.OffsetUom != TimeMeasure.None && rule.Offset > 0)
@@ -56,9 +56,9 @@ namespace BentleyOttman
                 while (IsInInterval(rule.Start.AddTicks(offset.Ticks)) || IsInInterval(rule.End.AddTicks(offset.Ticks)))
                 {
                     MainDictionary.Add(new KeyValuePair<DateTime, MainDicStructure>(
-                        rule.Start.AddTicks(offset.Ticks), new MainDicStructure(rule.Guid.Value, true, isRule)));
+                        rule.Start.AddTicks(offset.Ticks), new MainDicStructure(rule.Guid, true, isRule)));
                     MainDictionary.Add(new KeyValuePair<DateTime, MainDicStructure>(
-                        rule.End.AddTicks(offset.Ticks), new MainDicStructure(rule.Guid.Value, false, isRule)));
+                        rule.End.AddTicks(offset.Ticks), new MainDicStructure(rule.Guid, false, isRule)));
 
                     offset = offset.CalculateOffset(rule.Offset, rule.OffsetUom);
                 }

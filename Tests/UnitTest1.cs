@@ -221,12 +221,15 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            RepairRule rule1 = new RepairRule(new Guid(),
+            var guid1 = new Guid();
+            var guid2 = new Guid();
+
+            RepairRule rule1 = new RepairRule(guid1,
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
                 TimeMeasure.Days);
-            RepairRule rule2 = new RepairRule(new Guid(),
+            RepairRule rule2 = new RepairRule(guid2,
                 new DateTime(2020, 6, 1, 12, 0, 0),
                 new DateTime(2020, 6, 1, 13, 0, 0),
                 1,
@@ -239,28 +242,34 @@ namespace Tests
 
             Assert.AreEqual(3, result.Count);
 
-            Assert.AreEqual(new Tuple<DateTime, DateTime>(
-                new DateTime(2020, 8, 1, 9, 0, 0),
-                new DateTime(2020, 8, 1, 17, 0, 0)), result[0]);
-            Assert.AreEqual(new Tuple<DateTime, DateTime>(
-                new DateTime(2020, 8, 2, 9, 0, 0),
-                new DateTime(2020, 8, 2, 17, 0, 0)), result[1]);
-            Assert.AreEqual(new Tuple<DateTime, DateTime>(
-                new DateTime(2020, 8, 3, 9, 0, 0),
-                new DateTime(2020, 8, 3, 17, 0, 0)), result[2]);
+            Assert.AreEqual(new ResultStructure(){Guid = guid1, StartDateTime = new DateTime(2020, 8, 1, 9, 0, 0),
+                EndDateTime = new DateTime(2020, 8, 1, 17, 0, 0) }, result[0]);
+            Assert.AreEqual(new ResultStructure()
+            {
+                Guid = guid1,
+                StartDateTime = new DateTime(2020, 8, 2, 9, 0, 0),
+                EndDateTime = new DateTime(2020, 8, 2, 17, 0, 0)
+            }, result[1]);
+            Assert.AreEqual(new ResultStructure()
+            {
+                Guid = guid1,
+                StartDateTime = new DateTime(2020, 8, 3, 9, 0, 0),
+                EndDateTime = new DateTime(2020, 8, 3, 17, 0, 0)
+            }, result[2]);
         }
 
         [Test]
         public void TwoIntersecRules_2()
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
-
-            RepairRule rule1 = new RepairRule(new Guid(),
+            Guid guid1 = new Guid();
+            Guid guid2 = new Guid();
+            RepairRule rule1 = new RepairRule(guid1,
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
                 TimeMeasure.Days);
-            RepairRule rule2 = new RepairRule(new Guid(),
+            RepairRule rule2 = new RepairRule(guid2,
                 new DateTime(2020, 6, 1, 16, 0, 0),
                 new DateTime(2020, 6, 1, 18, 0, 0),
                 1,
@@ -273,15 +282,24 @@ namespace Tests
 
             Assert.AreEqual(3, result.Count);
 
-            Assert.AreEqual(new Tuple<DateTime, DateTime>(
-                new DateTime(2020, 8, 1, 9, 0, 0),
-                new DateTime(2020, 8, 1, 18, 0, 0)), result[0]);
-            Assert.AreEqual(new Tuple<DateTime, DateTime>(
-                new DateTime(2020, 8, 2, 9, 0, 0),
-                new DateTime(2020, 8, 2, 18, 0, 0)), result[1]);
-            Assert.AreEqual(new Tuple<DateTime, DateTime>(
-                new DateTime(2020, 8, 3, 9, 0, 0),
-                new DateTime(2020, 8, 3, 18, 0, 0)), result[2]);
+            Assert.AreEqual(new ResultStructure()
+            {
+                Guid = guid1,
+                StartDateTime = new DateTime(2020, 8, 1, 9, 0, 0),
+                EndDateTime = new DateTime(2020, 8, 1, 18, 0, 0)
+            }, result[0]);
+            Assert.AreEqual(new ResultStructure()
+            {
+                Guid = guid1,
+                StartDateTime = new DateTime(2020, 8, 2, 9, 0, 0),
+                EndDateTime = new DateTime(2020, 8, 2, 18, 0, 0)
+            }, result[1]);
+            Assert.AreEqual(new ResultStructure()
+            {
+                Guid = guid1,
+                StartDateTime = new DateTime(2020, 8, 3, 9, 0, 0),
+                EndDateTime = new DateTime(2020, 8, 3, 18, 0, 0)
+            }, result[2]);
         }
 
         [Test]
@@ -289,7 +307,8 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            RepairRule rule1 = new RepairRule(new Guid(),
+            var guid = new Guid();
+            RepairRule rule1 = new RepairRule(guid,
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
@@ -313,23 +332,32 @@ namespace Tests
             var result = algo.GetResult();
 
             Assert.AreEqual(3, result.Count);
-            Assert.AreEqual(new Tuple<DateTime, DateTime>(
-                new DateTime(2020, 8, 1, 9, 0, 0),
-                new DateTime(2020, 8, 1, 17, 0, 0)), result[0]);
-            Assert.AreEqual(new Tuple<DateTime, DateTime>(
-                new DateTime(2020, 8, 2, 11, 0, 0),
-                new DateTime(2020, 8, 2, 17, 0, 0)), result[1]);
-            Assert.AreEqual(new Tuple<DateTime, DateTime>(
-                new DateTime(2020, 8, 3, 9, 0, 0),
-                new DateTime(2020, 8, 3, 17, 0, 0)), result[2]);
+            Assert.AreEqual(new ResultStructure()
+            {
+                Guid = guid, 
+                StartDateTime = new DateTime(2020, 8, 1, 9, 0, 0), 
+                EndDateTime = new DateTime(2020, 8, 1, 17, 0, 0)
+            }, result[0]);
+            Assert.AreEqual(new ResultStructure()
+                {
+                    Guid = guid, 
+                    StartDateTime = new DateTime(2020, 8, 2, 11, 0, 0), 
+                    EndDateTime = new DateTime(2020, 8, 2, 17, 0, 0)
+                }, result[1]);
+            Assert.AreEqual(new ResultStructure()
+                {
+                    Guid = guid,
+                    StartDateTime = new DateTime(2020, 8, 3, 9, 0, 0),
+                    EndDateTime = new DateTime(2020, 8, 3, 17, 0, 0)
+                }, result[2]);
         }
 
         [Test]
         public void TwoEntersecException_2()
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
-
-            RepairRule rule1 = new RepairRule(new Guid(),
+            Guid guid = new Guid();
+            RepairRule rule1 = new RepairRule(guid,
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
@@ -353,15 +381,24 @@ namespace Tests
             var result = algo.GetResult();
 
             Assert.AreEqual(3, result.Count);
-            Assert.AreEqual(new Tuple<DateTime, DateTime>(
-                new DateTime(2020, 8, 1, 9, 0, 0),
-                new DateTime(2020, 8, 1, 17, 0, 0)), result[0]);
-            Assert.AreEqual(new Tuple<DateTime, DateTime>(
-                new DateTime(2020, 8, 2, 12, 0, 0),
-                new DateTime(2020, 8, 2, 17, 0, 0)), result[1]);
-            Assert.AreEqual(new Tuple<DateTime, DateTime>(
-                new DateTime(2020, 8, 3, 9, 0, 0),
-                new DateTime(2020, 8, 3, 17, 0, 0)), result[2]);
+            Assert.AreEqual(new ResultStructure()
+                {
+                    Guid = guid,
+                    StartDateTime = new DateTime(2020, 8, 1, 9, 0, 0),
+                EndDateTime = new DateTime(2020, 8, 1, 17, 0, 0)
+            }, result[0]);
+            Assert.AreEqual(new ResultStructure()
+                {
+                    Guid = guid,
+                    StartDateTime = new DateTime(2020, 8, 2, 12, 0, 0),
+                    EndDateTime = new DateTime(2020, 8, 2, 17, 0, 0)
+            }, result[1]);
+            Assert.AreEqual(new ResultStructure()
+                {
+                    Guid = guid,
+                    StartDateTime = new DateTime(2020, 8, 3, 9, 0, 0),
+                    EndDateTime = new DateTime(2020, 8, 3, 17, 0, 0)
+            }, result[2]);
         }
 
         [Test]
