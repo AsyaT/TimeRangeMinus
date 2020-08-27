@@ -19,7 +19,7 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3,23,59,59));
 
-            var guid = new Guid();
+            var guid = Guid.NewGuid();
             Rule rule1 = new Rule(
                 guid, 
                 new DateTime(2020, 6, 1, 9, 0, 0),
@@ -59,7 +59,7 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            var rule0 = new Guid();
+            var rule0 = Guid.NewGuid();
 
             Rule rule1 = new Rule(rule0,
                 new DateTime(2020, 8, 2, 9, 0, 0),
@@ -98,7 +98,7 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            Rule rule1 = new Rule(new Guid(),
+            Rule rule1 = new Rule(Guid.NewGuid(),
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
@@ -123,7 +123,7 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            Rule rule1 = new Rule(new Guid(),
+            Rule rule1 = new Rule(Guid.NewGuid(),
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
@@ -148,7 +148,7 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            Rule rule1 = new Rule(new Guid(),
+            Rule rule1 = new Rule(Guid.NewGuid(),
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
@@ -172,7 +172,7 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            Rule rule1 = new Rule(new Guid(),
+            Rule rule1 = new Rule(Guid.NewGuid(),
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
@@ -197,12 +197,12 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            Rule rule1 = new Rule(new Guid(),
+            Rule rule1 = new Rule(Guid.NewGuid(),
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
                 1,
                 TimeMeasure.Days);
-            Rule rule2 = new Rule(new Guid(),
+            Rule rule2 = new Rule(Guid.NewGuid(),
                 new DateTime(2020, 6, 1, 18, 0, 0),
                 new DateTime(2020, 6, 1, 20, 0, 0),
                 1,
@@ -221,8 +221,8 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            var guid1 = new Guid();
-            var guid2 = new Guid();
+            var guid1 = Guid.NewGuid();
+            var guid2 = Guid.NewGuid();
 
             Rule rule1 = new Rule(guid1,
                 new DateTime(2020, 6, 1, 9, 0, 0),
@@ -262,8 +262,8 @@ namespace Tests
         public void TwoIntersecRules_2()
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
-            Guid guid1 = new Guid();
-            Guid guid2 = new Guid();
+            Guid guid1 = Guid.NewGuid();
+            Guid guid2 = Guid.NewGuid();
             Rule rule1 = new Rule(guid1,
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
@@ -307,7 +307,7 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
 
-            var guid = new Guid();
+            var guid = Guid.NewGuid();
             Rule rule1 = new Rule(guid,
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
@@ -356,7 +356,7 @@ namespace Tests
         public void TwoEntersecException_2()
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 8, 1), new DateTime(2020, 8, 3, 23, 59, 59));
-            Guid guid = new Guid();
+            Guid guid = Guid.NewGuid();
             Rule rule1 = new Rule(guid,
                 new DateTime(2020, 6, 1, 9, 0, 0),
                 new DateTime(2020, 6, 1, 17, 0, 0),
@@ -406,7 +406,7 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(null, new DateTime(2020,6,15));
 
-            algo.AddRule(new Rule(new Guid(), new DateTime(2020,6,1, 8,0,0), new DateTime(2020,6,1,20,0,0), 1, TimeMeasure.Days));
+            algo.AddRule(new Rule(Guid.NewGuid(), new DateTime(2020,6,1, 8,0,0), new DateTime(2020,6,1,20,0,0), 1, TimeMeasure.Days));
             algo.AddRule(new Exclusion( new DateTime(2020, 6, 3, 8, 0, 0), new DateTime(2020, 6, 3, 20, 0, 0), 7, TimeMeasure.Days));
 
             var result = algo.GetResult();
@@ -419,7 +419,7 @@ namespace Tests
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020,6,5, 11,30,00), new DateTime(2020, 6, 15, 11,30,00));
 
-            algo.AddRule(new Rule(new Guid(), new DateTime(2020,6,1,8,0,0), new DateTime(2020,6,1,13,0,0), 1, TimeMeasure.Days));
+            algo.AddRule(new Rule(Guid.NewGuid(), new DateTime(2020,6,1,8,0,0), new DateTime(2020,6,1,13,0,0), 1, TimeMeasure.Days));
 
             var result = algo.GetResult(true);
 
@@ -430,8 +430,8 @@ namespace Tests
         public void RealTest()
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(null, DateTime.Now.AddDays(60));
-            Guid rule1 = new Guid();
-            Guid rule2 = new Guid();
+            Guid rule1 = Guid.NewGuid();
+            Guid rule2 = Guid.NewGuid();
             algo.AddRule(new Rule(rule1,new DateTime(2020,8,2,8,0,0), new DateTime(2020,8,3,0,0,0), null,TimeMeasure.None  ));
             algo.AddRule(new Rule(rule2,new DateTime(2020,8,10,8,0,0), new DateTime(2020,8,11,0,0,0), null,TimeMeasure.None  ));
 
