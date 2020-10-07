@@ -10,7 +10,9 @@ namespace BentleyOttman
 
         public override bool Equals(object? obj)
         {
-            return this.Guid == ((ResultStructure)obj).Guid && this.StartDateTime == ((ResultStructure)obj).StartDateTime && this.EndDateTime == ((ResultStructure)obj).EndDateTime;
+            return this.Guid == ((ResultStructure)obj).Guid 
+                && this.StartDateTime == ((ResultStructure)obj).StartDateTime 
+                && this.EndDateTime == ((ResultStructure)obj).EndDateTime;
         }
     }
 }
