@@ -96,7 +96,7 @@ namespace BentleyOttman
                             isExclusionInAction = false;
                             if (isRuleInAction.Any())
                             {
-                                Guid newGuid = lastOpenGuid ?? new Guid();
+                                Guid newGuid = lastOpenGuid ?? (resultCandidate!=null && resultCandidate.Guid.HasValue ? resultCandidate.Guid.Value : new Guid());
                                 resultCandidate = new ResultStructure() { Guid = newGuid, StartDateTime = timeEvent.Key.Item1, EndDateTime = new DateTime(0) };
                                 lastOpenGuid = null;
                             }
@@ -122,7 +122,7 @@ namespace BentleyOttman
                             {
                                 resultCandidate = null;
                             }
-                            else if (resultCandidate != null && resultCandidate.StartDateTime.Equals(timeEvent.Key) == false && isRuleInAction.Count == 0)
+                            else if (resultCandidate != null && resultCandidate.StartDateTime.Equals(timeEvent.Key.Item1) == false && isRuleInAction.Count == 0)
                             {
                                 resultCandidate = new ResultStructure() { Guid = resultCandidate.Guid, StartDateTime = resultCandidate.StartDateTime, EndDateTime = timeEvent.Key.Item1 };
                                 result.Add(resultCandidate);
