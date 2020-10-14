@@ -84,7 +84,7 @@ namespace BentleyOttman
                         {
                             isExclusionInAction = true;
 
-                            if (isRuleInAction.Any() && resultCandidate != null && resultCandidate.StartDateTime.Equals(timeEvent.Key) == false)
+                            if (isRuleInAction.Any() && resultCandidate != null && resultCandidate.StartDateTime.Equals(timeEvent.Key.Item1) == false)
                             {
                                 resultCandidate = new ResultStructure() { Guid = resultCandidate.Guid, StartDateTime = resultCandidate.StartDateTime, EndDateTime = timeEvent.Key.Item1 };
                                 result.Add(resultCandidate);

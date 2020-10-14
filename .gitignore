@@ -28,3 +28,4 @@
 *.nuspec
 /BentleyOttman/obj/Release/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.cs
 /Tests/obj/Release/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.cs
+/Tests/obj/*
