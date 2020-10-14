@@ -415,15 +415,52 @@ namespace Tests
         }
 
         [Test]
-        public void CutPeriodTest()
+        public void IncludeCutPeriodTest()
         {
             BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020,6,5, 11,30,00), new DateTime(2020, 6, 15, 11,30,00));
 
-            algo.AddRule(new Rule(Guid.NewGuid(), new DateTime(2020,6,1,8,0,0), new DateTime(2020,6,1,13,0,0), 1, TimeMeasure.Days));
+            var guid = Guid.NewGuid();
+
+            algo.AddRule(new Rule(guid, new DateTime(2020,6,1,8,0,0), new DateTime(2020,6,1,13,0,0), 1, TimeMeasure.Days));
 
             var result = algo.GetResult(true);
 
             Assert.AreEqual(11, result.Count);
+
+            Assert.AreEqual(new ResultStructure()
+            {
+                Guid = guid,
+                StartDateTime = new DateTime(2020, 6, 5, 8, 0, 0),
+                EndDateTime = new DateTime(2020, 6, 5, 13, 0, 0)
+            }, result[0]);
+
+            Assert.AreEqual(new ResultStructure()
+            {
+                Guid = guid,
+                StartDateTime = new DateTime(2020, 6, 6, 8, 0, 0),
+                EndDateTime = new DateTime(2020, 6, 6, 13, 0, 0)
+            }, result[1]);
+        }
+
+        [Test]
+        public void NotIncludeCutPeriodTest()
+        {
+            BentleyOttmanAlgorithm algo = new BentleyOttmanAlgorithm(new DateTime(2020, 6, 5, 11, 30, 00), new DateTime(2020, 6, 15, 11, 30, 00));
+
+            var guid = Guid.NewGuid();
+
+            algo.AddRule(new Rule(guid, new DateTime(2020, 6, 1, 8, 0, 0), new DateTime(2020, 6, 1, 13, 0, 0), 1, TimeMeasure.Days));
+
+            var result = algo.GetResult(false);
+
+            Assert.AreEqual(10, result.Count);
+
+            Assert.AreEqual(new ResultStructure()
+            {
+                Guid = guid,
+                StartDateTime = new DateTime(2020, 6, 6, 8, 0, 0),
+                EndDateTime = new DateTime(2020, 6, 6, 13, 0, 0)
+            }, result[0]);
         }
 
         [Test]

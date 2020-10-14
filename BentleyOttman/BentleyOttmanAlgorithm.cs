@@ -144,7 +144,7 @@ namespace BentleyOttman
                 }
                 else
                 {
-                    result = result.Where(x => DateTime.Compare(StartDateTime.Value, x.EndDateTime) <= 0 ).ToList();
+                    result = result.Where(x => DateTime.Compare(StartDateTime.Value, x.StartDateTime) <= 0 ).ToList();
                 }
             }
 
